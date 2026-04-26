@@ -107,20 +107,53 @@ $cl = current_lang();
     </div>
 </section>
 
-<section class="features">
-    <h2><?= $cl === 'tr' ? 'Tek Cekirdek, Cok Istemci' : 'One Core, Many Clients' ?></h2>
+<section class="features" style="background:var(--bg-secondary);padding:60px 0;">
+    <div class="container">
+        <div style="text-align:center;margin-bottom:40px;">
+            <h2 style="font-size:28px;margin-bottom:8px;"><?= lang('sw_types_title') ?></h2>
+            <p style="color:var(--text-secondary);font-size:15px;max-width:600px;margin:0 auto;"><?= lang('sw_types_subtitle') ?></p>
+        </div>
+        <div class="feature-grid" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+            <?php
+            $swTypes = [
+                ['sw_gui', 'sw_gui_desc'],
+                ['sw_web', 'sw_web_desc'],
+                ['sw_mobile', 'sw_mobile_desc'],
+                ['sw_game', 'sw_game_desc'],
+                ['sw_discord', 'sw_discord_desc'],
+                ['sw_browser', 'sw_browser_desc'],
+                ['sw_cli', 'sw_cli_desc'],
+                ['sw_lib', 'sw_lib_desc'],
+                ['sw_plugin', 'sw_plugin_desc'],
+                ['sw_launcher', 'sw_launcher_desc'],
+                ['sw_backend', 'sw_backend_desc'],
+                ['sw_iot', 'sw_iot_desc'],
+            ];
+            foreach ($swTypes as $sw):
+            ?>
+            <div class="feature-card" style="padding:16px;text-align:center;">
+                <h3 style="font-size:14px;margin-bottom:6px;"><?= lang($sw[0]) ?></h3>
+                <p style="font-size:12px;color:var(--text-secondary);margin:0;"><?= lang($sw[1]) ?></p>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<section class="features" style="padding:60px 0;">
+    <h2><?= lang('core_title') ?></h2>
     <div class="feature-grid">
         <div class="feature-card">
-            <h3><?= $cl === 'tr' ? 'GUI Uygulamalari' : 'GUI Applications' ?></h3>
-            <p><?= $cl === 'tr' ? 'Kullanici lisans anahtarini girer, istemci sunucuya sorar ve sonucu ekranda uygular.' : 'The user enters a license key, the client asks the server, and applies the result locally.' ?></p>
+            <h3><?= lang('core_gui') ?></h3>
+            <p><?= lang('core_gui_desc') ?></p>
         </div>
         <div class="feature-card">
-            <h3><?= $cl === 'tr' ? 'Discord Botlari' : 'Discord Bots' ?></h3>
-            <p><?= $cl === 'tr' ? 'Komut veya panel uzerinden girilen anahtar ayni cekirdek ile dogrulanir.' : 'Keys entered through commands or panels are validated by the same core.' ?></p>
+            <h3><?= lang('core_discord') ?></h3>
+            <p><?= lang('core_discord_desc') ?></p>
         </div>
         <div class="feature-card">
-            <h3><?= $cl === 'tr' ? 'Ozel Istemciler' : 'Custom Clients' ?></h3>
-            <p><?= $cl === 'tr' ? 'Launcher, updater, arka plan servisleri veya ozel entegrasyonlar ayni endpointi kullanir.' : 'Launchers, updaters, background services and custom integrations use the same endpoint.' ?></p>
+            <h3><?= lang('core_custom') ?></h3>
+            <p><?= lang('core_custom_desc') ?></p>
         </div>
     </div>
 </section>

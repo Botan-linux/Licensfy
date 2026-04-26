@@ -1,4 +1,4 @@
-# Licensfy - Kullanım Politikası ve Kurallar
+# Licensfy - Kullanım Politikası ve Kuralları
 
 **Son Güncelleme:** 27 Nisan 2026
 
@@ -6,7 +6,28 @@
 
 ## 1. Genel Bakış
 
-Licensfy, yazılım geliştiriciler için lisans anahtarı oluşturma, dağıtma ve doğrulama platformudur. Bu platformu kullanarak aşağıdaki kurallara uymanız gerekmektedir. Hizmeti kullanarak bu politikayı kabul etmiş sayılırsınız.
+Licensfy, yazılım geliştiriciler için lisans anahtarı oluşturma, dağıtma ve doğrulama platformudur. **Her türlü yazılımı lisanslama desteği sunarız** - masaüstü uygulamaları, web servisleri, mobil uygulamalar, oyunlar, SaaS çözümleri, Discord botları, tarayıcı eklentileri, CLI araçları, kütüphaneler, eklentiler ve daha fazlası fark etmez. Tek bir lisans çekirdeği ile tüm yazılım tiplerinizi lisanslayabilir ve yönetebilirsiniz.
+
+Bu platformu kullanarak aşağıdaki kurallara uymanız gerekmektedir. Hizmeti kullanarak bu politikayı kabul etmiş sayılırsınız.
+
+### Desteklenen Yazılım Tipleri
+
+Licensfy, aşağıdakiler dahil olmak üzere **her türlü yazılım** için lisans yönetimi desteği sunar:
+
+| Kategori | Açıklama |
+|----------|----------|
+| Masaüstü Uygulamaları | Windows, macOS, Linux için GUI uygulamaları (C#, C++, Python, Electron, vb.) |
+| Web Uygulamaları & SaaS | Web tabanlı yazılımlar, SaaS platformları, mikro servisler |
+| Mobil Uygulamalar | Android, iOS ve cross-platform mobil uygulamalar |
+| Oyunlar | Unity, Unreal Engine, Godot ve diğer oyun motorları ile geliştirilen oyunlar |
+| Discord Botları | Discord sunucuları için geliştirilen botlar ve panel entegrasyonları |
+| Tarayıcı Eklentileri | Chrome, Firefox, Edge tarayıcı eklentileri ve uzantıları |
+| CLI Araçları | Komut satırı araçları, terminal uygulamaları, script'ler |
+| Kütüphaneler & SDK'lar | Yazılım geliştirme kütüphaneleri, framework eklentileri, SDK'lar |
+| Plugin & Mod Sistemleri | Figma, VS Code, WordPress ve diğer platformlara eklenti/mod geliştirmeleri |
+| Launcher & Updater | Oyun veya uygulama başlatıcıları, otomatik güncelleme araçları |
+| Backend Servisleri | Mikro servisler, API gateway'ler, bulut fonksiyonları |
+| IoT & Gömülü Sistemler | IoT cihazları, gömülü yazılımlar, endüstriyel kontrol sistemleri |
 
 ## 2. Hesap ve Güvenlik
 
@@ -107,7 +128,17 @@ Aşağıdaki kullanımlar kesinlikle yasaktır:
 
 Yasaklı kullanım tespit edilmesi halinde hesap kalıcı olarak kapatılabilir.
 
-## 11. Sorumluluk Reddi
+## 11. Evrensel Lisanslama Politikası
+
+Licensfy, yazılım türü ayırt etmeksizin her türlü yazılım projesi için lisans yönetimi desteği sağlar. Bu kapsamda:
+
+- **Platform bağımsız:** Windows, macOS, Linux, Android, iOS, Web ve diğer tüm platformlardaki yazılımlar desteklenir.
+- **Dil bağımsız:** Python, JavaScript, C#, C++, Java, Go, Rust, PHP ve diğer tüm programlama dilleriyle geliştirilen yazılımlar desteklenir.
+- **Tip bağımsız:** Ticari yazılım, açık kaynak proje, freemium model, abonelik tabanlı hizmet veya bireysel araç fark etmez.
+- **Ölçek bağımsız:** Tek geliştirici projesinden kurumsal düzeydeki ürün lansmanlarına kadar tüm ölçeklerde kullanılabilir.
+- Tüm yazılım tipleri aynı doğrulama çekirdeğini (`/api/validate.php`) kullanır. İstemci tarafı ne olursa olsun, sunucu tarafı lisans mantığı değişmez.
+
+## 12. Sorumluluk Reddi
 
 Licensfy, bir lisans yönetim aracı olarak sunulmaktadır. Platformun kesintisiz çalışması garanti edilmez. Kullanıcıların lisans anahtarlarını ve API anahtarlarını düzenli olarak yedeklemesi önerilir. Platform üzerindeki verilerinizin yedeklenmesinden siz sorumlusunuz.
 

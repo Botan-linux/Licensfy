@@ -1,8 +1,33 @@
 <?php
-define("DB_HOST", getenv("LICENSFY_DB_HOST") ?: "");
-define("DB_NAME", getenv("LICENSFY_DB_NAME") ?: "");
-define("DB_USER", getenv("LICENSFY_DB_USER") ?: "");
-define("DB_PASS", getenv("LICENSFY_DB_PASS") ?: "");
+/**
+ * Licensfy - Veritabanı Yapılandırması
+ * 
+ * Öncelik sırası:
+ * 1. .env dosyası (proje kök dizininde)
+ * 2. Sunucu ortam değişkenleri (getenv)
+ * 3. Aşağıdaki varsayılan değerler
+ */
+
+// .env dosyası desteği (InfinityFree uyumlu)
+$envFile = __DIR__ . '/../../.env';
+if (file_exists($envFile)) {
+    $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0) continue;
+        if (strpos($line, '=') === false) continue;
+        list($key, $value) = explode('=', $line, 2);
+        $key = trim($key);
+        $value = trim($value);
+        if (!getenv($key)) {
+            putenv("$key=$value");
+        }
+    }
+}
+
+define("DB_HOST", getenv("LICENSFY_DB_HOST") ?: "sql100.infinityfree.com");
+define("DB_NAME", getenv("LICENSFY_DB_NAME") ?: "if0_41603336_licensfy");
+define("DB_USER", getenv("LICENSFY_DB_USER") ?: "if0_41603336");
+define("DB_PASS", getenv("LICENSFY_DB_PASS") ?: "VRc1EPRmqZLfSUh");
 
 // URL Ayarı: Tünel veya farklı hostlar için dinamik algılama
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https" : "http";

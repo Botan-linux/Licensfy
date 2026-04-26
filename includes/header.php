@@ -1,6 +1,6 @@
 <nav class="navbar">
 <div class="container nav-content">
-    <a href="/" class="nav-brand">Licensfy</a>
+    <a href="/" class="nav-brand"><img src="/assets/img/logo.svg" alt="Licensfy" style="height:28px;margin-right:8px;vertical-align:middle;">Licensfy</a>
     <div class="nav-links">
         <a href="/"><?= lang("nav_home") ?></a>
         <?php if (is_logged_in()): ?>

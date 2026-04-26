@@ -1,0 +1,26 @@
+# Dizin listelemeyi kapat
+Options -Indexes
+
+# Rewrite Engine
+RewriteEngine On
+RewriteBase /
+
+# Hassas dosyaları engelle
+<FilesMatch "\.(py|md|log|db|sql|sh|bak|swp|git)">
+    Deny from all
+</FilesMatch>
+
+# Gizli dosyaları engelle
+<FilesMatch "^\.">
+    Deny from all
+</FilesMatch>
+
+# Mevcut dosya veya dizin değilse router.php'ye yönlendir
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ router.php [L,QSA]
+
+# API ve asset dosyalarına izin ver
+<Files "validate.php">
+    Allow from all
+</Files>

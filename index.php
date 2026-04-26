@@ -147,6 +147,117 @@ response = requests.post(
     </div>
 </div>
 
+<!-- Rules & Policy Section -->
+<section class="features" style="background:var(--bg-secondary);padding:60px 0;">
+    <div class="container">
+        <div style="text-align:center;margin-bottom:40px;">
+            <h2 style="font-size:28px;margin-bottom:8px;"><?= lang('lp_rules_title') ?></h2>
+            <p style="color:var(--text-secondary);"><?= lang('lp_rules_subtitle') ?></p>
+        </div>
+        <div class="grid-2" style="gap:16px;">
+            <div class="card" style="border:1px solid var(--border);">
+                <div class="card-body" style="display:flex;gap:12px;align-items:flex-start;">
+                    <div style="min-width:36px;height:36px;border-radius:8px;background:rgba(108,92,231,0.15);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700;">1</div>
+                    <div>
+                        <h4 style="margin-bottom:4px;"><?= $cl === 'tr' ? 'Hesap Yönetimi' : 'Account Management' ?></h4>
+                        <p style="color:var(--text-secondary);font-size:13px;margin:0;"><?= lang('lp_rule_account') ?></p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="border:1px solid var(--border);">
+                <div class="card-body" style="display:flex;gap:12px;align-items:flex-start;">
+                    <div style="min-width:36px;height:36px;border-radius:8px;background:rgba(108,92,231,0.15);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700;">2</div>
+                    <div>
+                        <h4 style="margin-bottom:4px;"><?= $cl === 'tr' ? 'API Kullanımı' : 'API Usage' ?></h4>
+                        <p style="color:var(--text-secondary);font-size:13px;margin:0;"><?= lang('lp_rule_api') ?></p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="border:1px solid var(--border);">
+                <div class="card-body" style="display:flex;gap:12px;align-items:flex-start;">
+                    <div style="min-width:36px;height:36px;border-radius:8px;background:rgba(108,92,231,0.15);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700;">3</div>
+                    <div>
+                        <h4 style="margin-bottom:4px;"><?= $cl === 'tr' ? 'Lisans Kuralları' : 'License Rules' ?></h4>
+                        <p style="color:var(--text-secondary);font-size:13px;margin:0;"><?= lang('lp_rule_license') ?></p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="border:1px solid var(--border);">
+                <div class="card-body" style="display:flex;gap:12px;align-items:flex-start;">
+                    <div style="min-width:36px;height:36px;border-radius:8px;background:rgba(108,92,231,0.15);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700;">4</div>
+                    <div>
+                        <h4 style="margin-bottom:4px;">Blacklist</h4>
+                        <p style="color:var(--text-secondary);font-size:13px;margin:0;"><?= lang('lp_rule_blacklist') ?></p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="border:1px solid var(--border);">
+                <div class="card-body" style="display:flex;gap:12px;align-items:flex-start;">
+                    <div style="min-width:36px;height:36px;border-radius:8px;background:rgba(108,92,231,0.15);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700;">5</div>
+                    <div>
+                        <h4 style="margin-bottom:4px;">Webhook</h4>
+                        <p style="color:var(--text-secondary);font-size:13px;margin:0;"><?= lang('lp_rule_webhook') ?></p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="border:1px solid var(--border);">
+                <div class="card-body" style="display:flex;gap:12px;align-items:flex-start;">
+                    <div style="min-width:36px;height:36px;border-radius:8px;background:rgba(255,107,107,0.15);display:flex;align-items:center;justify-content:center;color:var(--danger);font-weight:700;">!</div>
+                    <div>
+                        <h4 style="margin-bottom:4px;"><?= $cl === 'tr' ? 'Yasaklı Kullanım' : 'Forbidden Usage' ?></h4>
+                        <p style="color:var(--text-secondary);font-size:13px;margin:0;"><?= lang('lp_rule_forbidden') ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Security Section -->
+<section class="features" style="padding:60px 0;">
+    <div class="container">
+        <div style="text-align:center;margin-bottom:40px;">
+            <h2 style="font-size:28px;margin-bottom:8px;"><?= lang('lp_security_title') ?></h2>
+            <p style="color:var(--text-secondary);"><?= lang('lp_security_subtitle') ?></p>
+        </div>
+        <div class="feature-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;">
+            <?php
+            $secItems = [
+                ['lp_sec_csrf', 'lp_sec_csrf_desc', 'shield'],
+                ['lp_sec_sql', 'lp_sec_sql_desc', 'lock'],
+                ['lp_sec_hmac', 'lp_sec_hmac_desc', 'key'],
+                ['lp_sec_rate', 'lp_sec_rate_desc', 'clock'],
+                ['lp_sec_bcrypt', 'lp_sec_bcrypt_desc', 'hash'],
+                ['lp_sec_headers', 'lp_sec_headers_desc', 'header'],
+                ['lp_sec_hwid', 'lp_sec_hwid_desc', 'cpu'],
+            ];
+            $icons = [
+                'shield' => '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+                'lock' => '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+                'key' => '<path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>',
+                'clock' => '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+                'hash' => '<line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/>',
+                'header' => '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="2" x2="12" y2="22"/>',
+                'cpu' => '<rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/>',
+            ];
+            foreach ($secItems as $i => $item):
+                $svgIcon = $icons[$item[2]] ?? $icons['shield'];
+            ?>
+            <div class="feature-card" style="padding:20px;text-align:center;">
+                <div class="icon" style="margin:0 auto 12px;width:40px;height:40px;">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><?= $svgIcon ?></svg>
+                </div>
+                <h3 style="font-size:15px;margin-bottom:6px;"><?= lang($item[0]) ?></h3>
+                <p style="font-size:13px;color:var(--text-secondary);"><?= lang($item[1]) ?></p>
+            </div>
+            <?php endforeach; ?>
+        </div>
+        <div style="text-align:center;margin-top:32px;">
+            <p style="color:var(--text-muted);font-size:12px;"><?= lang('lp_rule_privacy') ?></p>
+        </div>
+    </div>
+</section>
+
 <?php include __DIR__ . '/includes/footer.php'; ?>
 </body>
 </html>

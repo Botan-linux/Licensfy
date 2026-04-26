@@ -1,7 +1,7 @@
 <?php
 /**
- * Licensfy - Robust Router (v3.1)
- * Fixed 404 issue and improved path resolution.
+ * Licensfy - Robust Router (v3.2)
+ * Added bilingual URL mapping (TR/EN → PHP files).
  */
 
 // UTF-8 Desteği
@@ -26,15 +26,46 @@ if (preg_match('/^\/(ürün|urun)\/([0-9]+)$/u', $uri, $matches)) {
     }
 }
 
-// 3. Uzantısız veya PHP Dosya Yönlendirmeleri
+// 3. Dil URL Mapping (İngilizce URL'ler → PHP dosyaları)
+$routes = [
+    'dashboard'       => 'dashboard.php',
+    'products'        => 'urunler.php',
+    'licenses'        => 'lisanslar.php',
+    'blacklist'       => 'blacklist.php',
+    'webhooks'        => 'webhooks.php',
+    'api-docs'        => 'api_docs.php',
+    'logs'            => 'loglar.php',
+    'settings'        => 'ayarlar.php',
+    'login'           => 'giris.php',
+    'logout'          => 'cikis.php',
+    'register'        => 'kayit.php',
+    'add-product'     => 'urun_ekle.php',
+    // Türkçe URL'ler de desteklensin
+    'urunler'         => 'urunler.php',
+    'lisanslar'       => 'lisanslar.php',
+    'loglar'          => 'loglar.php',
+    'ayarlar'         => 'ayarlar.php',
+    'giris'           => 'giris.php',
+    'cikis'           => 'cikis.php',
+    'kayit'           => 'kayit.php',
+];
+
+// 4. Uzantısız veya PHP Dosya Yönlendirmeleri
 $path = ltrim($uri, '/');
 if ($uri === '/') {
     $file_to_load = __DIR__ . '/index.php';
 } else {
-    // Önce direkt .php olarak bak, sonra uzantısız bak
-    if (file_exists(__DIR__ . $uri) && is_file(__DIR__ . $uri)) {
+    // Önce route map'e bak
+    $routePath = strtolower($path);
+    if (isset($routes[$routePath])) {
+        $file_to_load = __DIR__ . '/' . $routes[$routePath];
+    }
+    // Sonra direkt dosya olarak bak
+    elseif (file_exists(__DIR__ . $uri) && is_file(__DIR__ . $uri)) {
         $file_to_load = __DIR__ . $uri;
-    } elseif (file_exists(__DIR__ . '/' . $path . '.php')) {
+    }
+    // Sonra .php uzantısıyla bak
+    elseif (file_exists(__DIR__ . '/' . $path . '.php')) {
         $file_to_load = __DIR__ . '/' . $path . '.php';
     } else {
         $file_to_load = null;
@@ -47,7 +78,7 @@ if ($file_to_load && (strpos($file_to_load, '/includes/') !== false || strpos($f
     die("Forbidden Area");
 }
 
-// 4. Dosya Yükleme veya 404
+// 5. Dosya Yükleme veya 404
 if ($file_to_load && file_exists($file_to_load)) {
     require $file_to_load;
     exit;

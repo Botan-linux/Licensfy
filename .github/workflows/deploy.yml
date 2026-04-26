@@ -1,0 +1,29 @@
+name: 🚀 Deploy to InfinityFree
+
+# İş akışı ne zaman çalışsın?
+on:
+  push:               # "main" dalına her kod gönderildiğinde
+    branches:
+      - main
+  workflow_dispatch:  # İstersen GitHub arayüzünden elle de çalıştırabilirsin
+
+jobs:
+  deploy:
+    name: Deploy PHP Script
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Güncel kodları depodan al
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 2. Dosyaları FTP ile InfinityFree'e yükle
+      - name: Upload via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftpupload.net
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /htdocs/  # Burayı ihtiyacına göre güncelle
+          timeout: 86400000     # Büyük projeler için uzun zaman aşımı
+          log-level: standard   # FTP loglarını detaylı görmek için
